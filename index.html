@@ -3,12 +3,38 @@
 <head>
 <title>Jakub und Sidney Countdown</title>
 <link rel="stylesheet" href="style.css">
+<script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
 </head>
 <body>
 <h1>Countdown bis Jakub und Sidney 💋</h1>
-<img src="pic.png" alt="SiduJak">
+<img id= "image" src="pic.png" alt="Spinning">
 <p id="demo" style="font-size: 50px; text-align: center;"></p>
 
+<style>
+
+        /* Add animation */
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        /* Image spin animation */
+        .spin-image {
+            width: 500;
+            height: auto;
+            border-radius: 20px;
+        }
+
+        /* Add spin effect dynamically */
+        .spin {
+            animation: spin 2s linear infinite;
+        }
+    
+</style>
 <!-- Adding JavaScript code -->
 <script>
     // Converting string to required date format 
@@ -42,7 +68,35 @@
         if (t < 0) {
             clearInterval(x);
             document.getElementById("demo")
-                .innerHTML = "EXPIRED";
+                .innerHTML = "YIPPIEEEEE";
+                document.getElementById("image").classList.add("spin");
+                const defaults = {
+            spread: 1000,
+            ticks: 40,
+            gravity: 0,
+            decay: 0.94,
+            startVelocity: 20,
+            shapes: ["heart"],
+            colors: ["FFC0CB", "FF69B4", "FF1493", "C71585"],
+            };
+
+            confetti({
+            ...defaults,
+            particleCount: 200,
+            scalar: 2,
+            });
+
+            confetti({
+            ...defaults,
+            particleCount: 50,
+            scalar: 3,
+            });
+
+            confetti({
+            ...defaults,
+            particleCount: 25,
+            scalar: 4,
+            });
         }
     }, 1000);
 </script>
